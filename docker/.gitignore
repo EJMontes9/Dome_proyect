@@ -1,0 +1,4 @@
+# Datos persistentes de Docker
+mariadb/data/
+moodle/data/
+moodle/moodledata/

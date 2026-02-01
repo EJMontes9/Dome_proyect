@@ -1,0 +1,20 @@
+# FastAPI y servidor
+fastapi==0.109.2
+uvicorn[standard]==0.27.1
+
+# Cliente HTTP async
+httpx==0.26.0
+
+# Autenticación y seguridad
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+
+# Configuración
+pydantic-settings==2.1.0
+python-dotenv==1.0.1
+
+# Validación de Google OAuth
+google-auth==2.27.0
+
+# CORS
+python-multipart==0.0.9
