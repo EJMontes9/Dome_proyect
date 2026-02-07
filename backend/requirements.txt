@@ -15,6 +15,7 @@ python-dotenv==1.0.1
 
 # Validación de Google OAuth
 google-auth==2.27.0
+requests>=2.31.0
 
 # CORS
 python-multipart==0.0.9

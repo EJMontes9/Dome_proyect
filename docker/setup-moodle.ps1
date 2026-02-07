@@ -16,7 +16,7 @@ Set-Location $PSScriptRoot
 
 # Levantar los contenedores
 Write-Host "`nIniciando contenedores..." -ForegroundColor Yellow
-docker-compose up -d
+docker compose up -d
 
 if ($LASTEXITCODE -ne 0) {
     Write-Host "ERROR: No se pudieron iniciar los contenedores." -ForegroundColor Red
@@ -36,7 +36,7 @@ while (-not $ready -and $attempt -lt $maxAttempts) {
     Write-Host "  Intento $attempt/$maxAttempts..." -ForegroundColor Gray
 
     try {
-        $response = Invoke-WebRequest -Uri "http://localhost:8080" -TimeoutSec 5 -UseBasicParsing -ErrorAction SilentlyContinue
+        $response = Invoke-WebRequest -Uri "http://localhost:8090" -TimeoutSec 5 -UseBasicParsing -ErrorAction SilentlyContinue
         if ($response.StatusCode -eq 200) {
             $ready = $true
         }
@@ -49,7 +49,7 @@ if ($ready) {
     Write-Host "`n========================================" -ForegroundColor Green
     Write-Host "  Moodle esta listo!" -ForegroundColor Green
     Write-Host "========================================" -ForegroundColor Green
-    Write-Host "`nURL: http://localhost:8080" -ForegroundColor White
+    Write-Host "`nURL: http://localhost:8090" -ForegroundColor White
     Write-Host "Usuario: admin" -ForegroundColor White
     Write-Host "Contrasena: Admin123!" -ForegroundColor White
     Write-Host "`nPasos siguientes:" -ForegroundColor Yellow
@@ -60,5 +60,5 @@ if ($ready) {
     Write-Host "5. Generar token para el usuario admin" -ForegroundColor Gray
 } else {
     Write-Host "`nMoodle aun se esta iniciando. Intenta acceder en unos minutos." -ForegroundColor Yellow
-    Write-Host "URL: http://localhost:8080" -ForegroundColor White
+    Write-Host "URL: http://localhost:8090" -ForegroundColor White
 }

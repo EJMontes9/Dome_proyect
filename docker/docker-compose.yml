@@ -8,7 +8,7 @@ services:
       MYSQL_USER: moodle
       MYSQL_PASSWORD: moodlepassword
     volumes:
-      - ./mariadb/data:/var/lib/mysql
+      - mariadb_data:/var/lib/mysql
     ports:
       - "3306:3306"
     restart: unless-stopped
@@ -19,7 +19,7 @@ services:
       retries: 5
 
   moodle:
-    image: bitnami/moodle:4.5
+    image: bitnamilegacy/moodle:4.5
     container_name: moodle-app
     environment:
       MOODLE_DATABASE_HOST: mariadb
@@ -33,12 +33,17 @@ services:
       MOODLE_SITE_NAME: "Moodle Dev - Programacion Movil"
       ALLOW_EMPTY_PASSWORD: "no"
     volumes:
-      - ./moodle/data:/bitnami/moodle
-      - ./moodle/moodledata:/bitnami/moodledata
+      - moodle_data:/bitnami/moodle
+      - moodledata:/bitnami/moodledata
     ports:
-      - "8080:8080"
-      - "8443:8443"
+      - "8090:8080"
+      - "8453:8443"
     depends_on:
       mariadb:
         condition: service_healthy
     restart: unless-stopped
+
+volumes:
+  mariadb_data:
+  moodle_data:
+  moodledata:

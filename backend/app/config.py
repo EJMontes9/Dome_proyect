@@ -1,10 +1,14 @@
+from pathlib import Path
 from pydantic_settings import BaseSettings
 from functools import lru_cache
+
+# Ruta al .env relativa a este archivo (backend/.env)
+_ENV_FILE = Path(__file__).resolve().parent.parent / ".env"
 
 
 class Settings(BaseSettings):
     # Moodle
-    moodle_url: str = "http://localhost:8080"
+    moodle_url: str = "http://localhost:8090"
     moodle_token: str = ""
 
     # Google OAuth
@@ -19,7 +23,7 @@ class Settings(BaseSettings):
     debug: bool = True
 
     class Config:
-        env_file = ".env"
+        env_file = str(_ENV_FILE)
         env_file_encoding = "utf-8"
 
 
