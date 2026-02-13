@@ -7,7 +7,7 @@ import * as SecureStore from 'expo-secure-store';
 // Para Android emulator: http://10.0.2.2:8000
 // Para iOS simulator: http://localhost:8000
 // Para dispositivo fisico: http://<tu-ip-local>:8000
-export const API_URL = 'http://10.0.2.2:8000';
+export const API_URL = 'http://192.168.100.3:8000';
 
 // Storage keys
 const TOKEN_KEY = 'auth_token';
